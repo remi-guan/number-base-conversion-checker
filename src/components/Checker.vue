@@ -13,7 +13,7 @@
 
             <v-select
               v-model="originBase"
-              :input="clearAnswerMessage"
+              @input="clearAnswerMessage"
               item-value="base"
               label="I'm converting from"
               :items="types"
@@ -21,7 +21,7 @@
             </v-select>
             <v-select
               v-model="answerBase"
-              :input="clearAnswerMessage"
+              @input="clearAnswerMessage"
               item-value="base"
               label="To"
               :items="types"
@@ -31,12 +31,12 @@
             <h2 class="mt-5 mb-2 text-subtitle-2 font-weight-bold">Enter your answer</h2>
             <v-text-field
               v-model="origin"
-              :input="clearAnswerMessage"
+              @input="clearAnswerMessage"
               label="Origin Number"
             ></v-text-field>
             <v-text-field
               v-model="answer"
-              :input="clearAnswerMessage"
+              @input="clearAnswerMessage"
               label="My Answer"
             ></v-text-field>
 
@@ -50,7 +50,7 @@
 
             <v-alert
               outlined
-              v-if="alert.message"
+              v-show="alert.message"
               :type="alert.status"
               class="mt-6 mb-0"
             >
