@@ -85,7 +85,7 @@ export default Vue.extend({
       validator: (base: number, value: string) => {
         const nums = '0123456789ABCDEF';
         const valid = nums.slice(0, base);
-        const pattern = new RegExp(`^[${valid}]+$`, 'i');
+        const pattern = new RegExp(`^[.${valid}]+$`, 'i');
         return pattern.test(value) || `Please enter a valid number in base ${base}, allowed input values: ${valid}`;
       },
     },
