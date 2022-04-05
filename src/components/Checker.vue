@@ -31,11 +31,13 @@
             <h2 class="mt-5 mb-2 text-subtitle-2 font-weight-bold">Enter your answer</h2>
             <v-text-field
               v-model="origin"
+              :rules="[(v) => rules.validator(originBase, v)]"
               @input="clearAnswerMessage"
               label="Origin Number"
             ></v-text-field>
             <v-text-field
               v-model="answer"
+              :rules="[(v) => rules.validator(answerBase, v)]"
               @input="clearAnswerMessage"
               label="My Answer"
             ></v-text-field>
@@ -78,6 +80,14 @@ export default Vue.extend({
     alert: {
       status: '',
       message: '',
+    },
+    rules: {
+      validator: (base: number, value: string) => {
+        const nums = '0123456789ABCDEF';
+        const valid = nums.slice(0, base);
+        const pattern = new RegExp(`^[${valid}]+$`, 'i');
+        return pattern.test(value) || `Please enter a valid number in base ${base}, allowed input values: ${valid}`;
+      },
     },
     correct: 'Yes! Your answer is correct!',
     wrong: 'This is not the correct answer, please try again',
