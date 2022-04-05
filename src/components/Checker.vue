@@ -23,7 +23,7 @@
               v-model="answerBase"
               :input="clearAnswerMessage"
               item-value="base"
-              label="To this"
+              label="To"
               :items="types"
             >
             </v-select>
