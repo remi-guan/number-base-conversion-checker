@@ -3,7 +3,7 @@
     <v-container fill-height>
     <v-row justify="center">
       <v-col cols="auto">
-        <v-card raised>
+        <v-card raised transition="slide-y-transition">
           <v-card-title>Number Base Conversion Checker</v-card-title>
           <v-card-subtitle>
             Check your answer to the number base conversion question is correct or not
@@ -48,14 +48,17 @@
               Check My Answer
             </v-btn>
 
-            <v-alert
-              outlined
-              v-show="alert.message"
-              :type="alert.status"
-              class="mt-6 mb-0"
-            >
-              {{ alert.message }}
-            </v-alert>
+            <v-expand-transition>
+              <div v-if="alert.message">
+                <v-alert
+                  outlined
+                  :type="alert.status"
+                  class="mt-6 mb-2"
+                >
+                  {{ alert.message }}
+                </v-alert>
+              </div>
+            </v-expand-transition>
           </v-card-text>
         </v-card>
       </v-col>
